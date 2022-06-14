@@ -53,7 +53,7 @@ const NewRecipe = ({handleButtonClick}) => {
             </label>
 
             <br></br>
-            <button onClick={handleButtonClick}>Submit</button>
+            <input type="submit" />
             
         </form>
         </>
