@@ -1,6 +1,11 @@
+import { useState, useRef} from 'react';
+import RecipeList from '../components/RecipeList';
+import Recipe from '../components/Recipe';
+import NewRecipe from '../components/NewRecipe';
 
 
 const RecipeContainer = () => {
+    const inputValueRef = useRef()
     const [recipes, setRecipes] = useState (
         [
             {
@@ -24,27 +29,31 @@ const RecipeContainer = () => {
                 rating: 5
             }
           ])
+
+          const searchRecipe = () =>{
+              const cake = inputValueRef.current.value;
+              
+          }
+
           const addNewRecipe = () => {
-            console.log("new member added!");
-            const newMember={
+            console.log("new recipe added!");
+            const newRecipe={
                 cakeName:"Coffee Cake",
                 ingredients: ["coffee", "eggs", "flour", "butter", "walnuts"],
                 rating:"10"
             }
-            const updatedMembers = [...members, newMember]
-            if (applicationsOpen){setMembers(updatedMembers)}
-            
+            const updatedRecipes = [...recipes, newRecipe]
+            {setRecipes(updatedRecipes)}
         }
 
           return (
             <>
                 <h1>Recipe Container</h1>
-                <NewMember handleButtonClick={addNewRecipe} />
-                <UpdateStatus 
-                        applicationsOpen={applicationsOpen} 
-                        handleClick={updateApplicationsOpen}/>
-                <MemberList members={members}/>
+                <NewRecipe handleButtonClick={addNewRecipe} />
+                <RecipeList recipes={recipes}/>
             </>
             
         );
-        }
+}
+
+export default RecipeContainer;
